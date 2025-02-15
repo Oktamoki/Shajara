@@ -81,6 +81,7 @@ const treeData = {
               g = svg.append("g").attr("transform", "translate(50,50)");
         
         const tree = d3.tree().size([width - 100, height - 200]);
+        const tree = d3.tree().nodeSize([200, 150]);
         const root = d3.hierarchy(treeData);
         tree(root);
         
