@@ -78,7 +78,7 @@ const treeData = {
 
         const width = 1000, height = 600;
         const svg = d3.select("svg"),
-              g = svg.append("g")..attr("transform", d => `translate(${d.x},${d.y})`);
+              g = svg.append("g").attr("transform", "translate(50,50)");
         
         const tree = d3.tree()
             
