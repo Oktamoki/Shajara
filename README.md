@@ -47,47 +47,4 @@
     <div class="tree">
         <!-- Атасы мен әжесі -->
         <div class="level">
-            <div class="person" onclick="toggleChildren('parents')">АТА (Қуаныш)</div>
-            <div class="person" onclick="toggleChildren('parents')">ӘЖЕ (Айман)</div>
-        </div>
-
-        <div class="connector"></div>
-
-        <!-- Әке-шеше -->
-        <div id="parents" class="children">
-            <div class="level">
-                <div class="person" onclick="toggleChildren('me')">ӘКЕ (Еркін)</div>
-                <div class="person" onclick="toggleChildren('me')">АНА (Гүлжан)</div>
-            </div>
-            <div class="connector"></div>
-        </div>
-
-        <!-- Өзі -->
-        <div id="me" class="children">
-            <div class="level">
-                <div class="person" onclick="toggleChildren('children')">ӨЗІ (Мен)</div>
-            </div>
-            <div class="connector"></div>
-        </div>
-
-        <!-- Балалар -->
-        <div id="children" class="children">
-            <div class="level">
-                <div class="person">ҰЛ (Айдос)</div>
-                <div class="person">ҚЫЗ (Аружан)</div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function toggleChildren(id) {
-            var element = document.getElementById(id);
-            if (element.style.display === "none" || element.style.display === "") {
-                element.style.display = "block";
-            } else {
-                element.style.display = "none";
-            }
-        }
-    </script>
-</body>
-</html>
+            <div class="person" onclick="toggleChildren('parents')">АТА (
