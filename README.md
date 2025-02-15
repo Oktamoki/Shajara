@@ -1,4 +1,3 @@
-# Shajara
 <!DOCTYPE html>
 <html lang="kk">
 <head>
