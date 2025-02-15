@@ -111,7 +111,7 @@ const treeData = {
             
             const nodeEnter = node.enter().append("g")
                 .attr("class", d => "node " + (d.data.class || ""))
-                .attr("transform", d => translate(${d.x},${d.y}))
+                .attr("transform", d => `translate(${d.x},${d.y})`)
                 .on("click", function(event, d) {
                     if (d.children) {
                         d._children = d.children;
