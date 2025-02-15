@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="kk">
 <head>
     <meta charset="UTF-8">
@@ -54,6 +55,20 @@
                         { name: "Бала 5", class: "family2", children: [{ name: "Немере 13", class: "family2" }, { name: "Немере 14", class: "family2" }, { name: "Немере 15", class: "family2" }] },
                         { name: "Бала 6", class: "family2", children: [{ name: "Немере 16", class: "family2" }, { name: "Немере 17", class: "family2" }, { name: "Немере 18", class: "family2" }] }
                     ]
+                },
+                {
+                    name: "Жаңа Отбасы 3",
+                    class: "family3",
+                    children: [
+                        { name: "Бала 7", class: "family3", children: [{ name: "Немере 19", class: "family3" }, { name: "Немере 20", class: "family3" }] }
+                    ]
+                },
+                {
+                    name: "Жаңа Отбасы 4",
+                    class: "family4",
+                    children: [
+                        { name: "Бала 8", class: "family4", children: [{ name: "Немере 21", class: "family4" }, { name: "Немере 22", class: "family4" }] }
+                    ]
                 }
             ]
         };
@@ -67,22 +82,19 @@
             .separation((a, b) => a.parent === b.parent ? 1.5 : 2);
 
         const root = d3.hierarchy(treeData, d => d.children);
-        
-        // Барлық түйіндерді бастапқыда жасыру
-        root.children.forEach(collapse);
+        root.children.forEach(collapse); // Барлық түйіндерді жабу
 
         function collapse(d) {
             if (d.children) {
-                d._children = d.children;
-                d.children = null;
-                d._children.forEach(collapse);
+                d._children = d.children; // Барлық балаларын _children-ге сақтау
+                d.children = null; // Балалар тізімін босату
+                d._children.forEach(collapse); // Рекурсивті түрде барлық деңгейде жабу
             }
         }
 
         function update(source) {
+            const nodes = root.descendants(), links = root.links();
             tree(root);
-            const nodes = root.descendants();
-            const links = root.links();
 
             g.selectAll(".link").remove();
             g.selectAll(".node").remove();
