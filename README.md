@@ -4,98 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Шежіре</title>
+    <script src="https://unpkg.com/dtree/dist/dtree.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
         }
-        .tree {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .level {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            margin: 20px 0;
-            position: relative;
-        }
-        .person {
-            padding: 15px 20px;
-            border-radius: 10px;
-            text-align: center;
-            font-weight: bold;
-            background-color: #f0f0f0;
-            border: 2px solid black;
-            min-width: 120px;
-            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            position: relative;
-        }
-        .children {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-        }
-        .connector {
-            position: absolute;
-            width: 2px;
-            background: black;
-        }
-        .vertical-line {
-            height: 20px;
-            left: 50%;
-            top: -20px;
-        }
-        .horizontal-line {
+        #tree-container {
             width: 100%;
-            height: 2px;
-            background: black;
-            position: absolute;
-            top: 0;
+            height: 600px;
         }
     </style>
 </head>
 <body>
-    <h2>Менің Шежірем</h2>
-    <div class="tree">
-        <!-- Ата-әже -->
-        <div class="level">
-            <div class="person" onclick="toggleChildren('parents')">АТА (Қуаныш)</div>
-            <div class="person" onclick="toggleChildren('parents')">ӘЖЕ (Айман)</div>
-        </div>
 
-        <!-- Әке-шеше -->
-        <div id="parents" class="children">
-            <div class="level">
-                <div class="person" onclick="toggleChildren('kids')">ӘКЕ (Еркін)</div>
-                <div class="person" onclick="toggleChildren('kids')">АНА (Гүлжан)</div>
-            </div>
-        </div>
-
-        <!-- 5 бала -->
-        <div id="kids" class="children">
-            <div class="level">
-                <div class="person" onclick="toggleChildren('kid1')">ҰЛ 1</div>
-                <div class="person" onclick="toggleChildren('kid2')">ҰЛ 2</div>
-                <div class="person" onclick="toggleChildren('kid3')">ҰЛ 3</div>
-                <div class="person" onclick="toggleChildren('kid4')">ҰЛ 4</div>
-                <div class="person" onclick="toggleChildren('kid5')">ҰЛ 5</div>
-            </div>
-        </div>
-    </div>
+    <h2>Шежіре Деректері</h2>
+    <div id="tree-container"></div>
 
     <script>
-        function toggleChildren(id) {
-            var element = document.getElementById(id);
-            if (element.style.display === "none" || element.style.display === "") {
-                element.style.display = "flex";
-            } else {
-                element.style.display = "none";
-            }
-        }
+        var treeData = [
+            { name: "Қуаныш", id: 1, parent: 0 },
+            { name: "Айман", id: 2, parent: 0 },
+            { name: "Еркін", id: 3, parent: 1 },
+            { name: "Гүлжан", id: 4, parent: 2 },
+            { name: "Ұл 1", id: 5, parent: 3 },
+            { name: "Ұл 2", id: 6, parent: 3 },
+            { name: "Ұл 3", id: 7, parent: 3 },
+            { name: "Ұл 4", id: 8, parent: 3 },
+            { name: "Ұл 5", id: 9, parent: 3 }
+        ];
+
+        var tree = new dTree('tree');
+        treeData.forEach(person => {
+            tree.add(person.id, person.parent, person.name);
+        });
+
+        document.getElementById("tree-container").innerHTML = tree.toString();
     </script>
+
 </body>
 </html>
