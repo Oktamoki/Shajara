@@ -61,7 +61,10 @@
                     name: "Жаңа Отбасы 3",
                     class: "family3",
                     children: [
-                        { name: "Бала 7", class: "family3", children: [{ name: "Немере 19", class: "family3" }, { name: "Немере 20", class: "family3" }] }
+                        { name: "Фуркат Нигора", class: "family3" },
+                        { name: "Гайрат Дилфуза", class: "family3" },
+                        { name: "Уткир Шахло", class: "family3" },
+                        { name: "Октам Феруза", class: "family3" }
                     ]
                 },
                 {
