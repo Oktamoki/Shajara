@@ -36,16 +36,15 @@
     <script>
         const treeData = {
             name: "Ахмаджон Махбуба",
-            children: [
-                {
-                    name: "Абдумажит Салима",
+            children: [{name: "Абдумажит Салима",
                     class: "family1",
                     children: [{ name: "Фуркат Нигора",class: "family1",
                             children: [{ name: "Диёра Достон", class: "family1",
                                   children: [{ name: "Абдуллох", class: "family1"}] },
                                 { name: "Жахонгир", class: "family1"},
                                 { name: "Дилнура", class: "family1"} ] },
-                        { name: "Гайрат Дилфуза", class: "family1" },
+                        { name: "Гайрат Дилфуза", class: "family1",
+                         children: [{ name: "Мавжуда Зухриддин", class: "family1",},
                         { name: "Уткир Шахло", class: "family1" },
                         { name: "Октам Феруза", class: "family1" },
                         { name: "Учкун Дилобар", class: "family1" }       
