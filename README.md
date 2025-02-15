@@ -45,7 +45,7 @@
 </head>
 <body>
     <div class="tree">
-        <div class="box" onclick="toggleVisibility('parent')">Ата</div>
+        <div class="box" onclick="toggleVisibility('parent')">Ахмаджон Махбуба</div>
         <div id="parent" class="branch hidden">
             <div class="box" onclick="toggleVisibility('father')">Әке</div>
             <div class="box" onclick="toggleVisibility('mother1')">Шеше 1</div>
