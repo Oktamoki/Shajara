@@ -42,10 +42,10 @@
                     class: "family1",
                     children: [
                         { name: "Фуркат Нигора", class: "family1",
-                    children: [
-                        { name: "Диёра Достон", class: "family1"}
-                        { name: "Жахонгир", class: "family1"}
-                        { name: "Дилнура", class: "family1"}
+                        children: [
+                            { name: "Диёра Достон", class: "family1"}
+                            { name: "Жахонгир", class: "family1"}
+                            { name: "Дилнура", class: "family1"}
                     ] },
                         { name: "Гайрат Дилфуза", class: "family1" },
                         { name: "Уткир Шахло", class: "family1" },
