@@ -13,11 +13,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: relative;
         }
         .level {
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 20px;
             margin: 20px 0;
             position: relative;
@@ -36,8 +36,9 @@
         }
         .children {
             display: none;
+            flex-direction: column;
+            align-items: center;
         }
-        /* Сызықтарды байланыстыру */
         .connector {
             position: absolute;
             width: 2px;
@@ -62,4 +63,39 @@
     <div class="tree">
         <!-- Ата-әже -->
         <div class="level">
-            <div class="person" onclick="toggleChildren('
+            <div class="person" onclick="toggleChildren('parents')">АТА (Қуаныш)</div>
+            <div class="person" onclick="toggleChildren('parents')">ӘЖЕ (Айман)</div>
+        </div>
+
+        <!-- Әке-шеше -->
+        <div id="parents" class="children">
+            <div class="level">
+                <div class="person" onclick="toggleChildren('kids')">ӘКЕ (Еркін)</div>
+                <div class="person" onclick="toggleChildren('kids')">АНА (Гүлжан)</div>
+            </div>
+        </div>
+
+        <!-- 5 бала -->
+        <div id="kids" class="children">
+            <div class="level">
+                <div class="person" onclick="toggleChildren('kid1')">ҰЛ 1</div>
+                <div class="person" onclick="toggleChildren('kid2')">ҰЛ 2</div>
+                <div class="person" onclick="toggleChildren('kid3')">ҰЛ 3</div>
+                <div class="person" onclick="toggleChildren('kid4')">ҰЛ 4</div>
+                <div class="person" onclick="toggleChildren('kid5')">ҰЛ 5</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleChildren(id) {
+            var element = document.getElementById(id);
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "flex";
+            } else {
+                element.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
