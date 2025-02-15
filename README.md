@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="kk">
 <head>
     <meta charset="UTF-8">
@@ -5,21 +6,17 @@
     <title>Шежіре</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
-        .node {
-            cursor: pointer;
-        }
         .node rect {
             stroke: #000;
             stroke-width: 1.5px;
             rx: 5;
             ry: 5;
+            fill: #4CAF50;
         }
         .node text {
             font-size: 12px;
             text-anchor: middle;
             dominant-baseline: middle;
-            word-wrap: break-word;
-            width: 140px;
             fill: white;
         }
         .link {
@@ -27,115 +24,104 @@
             stroke: #555;
             stroke-width: 2px;
         }
-        .family1 rect { fill: #4CAF50; } /* Жасыл */
-        .family2 rect { fill: #2196F3; } /* Көк */
-        .family3 rect { fill: #ff9800; } /* Қызғылт сары */
-        .family4 rect { fill: #9c27b0; } /* Күлгін */
-    
     </style>
 </head>
 <body>
     <svg width="1000" height="600"></svg>
     <script>
-const treeData = {
-    name: "Ахмаджон Махбуба",
-    children: [
-        {
-            name: "Абдумажит Салима",
-            class: "family1",
+        const treeData = {
+            name: "Ахмаджон Махбуба",
             children: [
-                { name: "Фуркат Нигора", class: "family1" },
-                { name: "Гайрат Дилфуза", class: "family1" },
-                { name: "Уткир Шахло", class: "family1" },
-                { name: "Октам Феруза", class: "family1" }
+                {
+                    name: "Абдумажит Салима",
+                    children: [
+                        { name: "Фуркат Нигора" },
+                        { name: "Гайрат Дилфуза" },
+                        { name: "Уткир Шахло" },
+                        { name: "Октам Феруза" }
+                    ]
+                },
+                {
+                    name: "Абдукодир Ирисой",
+                    children: [
+                        { name: "Бала 5", children: [{ name: "Немере 13" }, { name: "Немере 14" }] },
+                        { name: "Бала 6", children: [{ name: "Немере 16" }, { name: "Немере 17" }] }
+                    ]
+                }
             ]
-        },
-        {
-            name: "Абдукодир Ирисой",
-            class: "family2",
-            children: [
-                { name: "Бала 5", class: "family2", children: [{ name: "Немере 13", class: "family2" }, { name: "Немере 14", class: "family2" }, { name: "Немере 15", class: "family2" }] },
-                { name: "Бала 6", class: "family2", children: [{ name: "Немере 16", class: "family2" }, { name: "Немере 17", class: "family2" }, { name: "Немере 18", class: "family2" }] }
-            ]
-        },
-        {
-            name: "Жаңа Отбасы 3",
-            class: "family3",
-            children: [
-                { name: "Бала 7", class: "family3", children: [{ name: "Немере 19", class: "family3" }, { name: "Немере 20", class: "family3" }] }
-            ]
-        },
-        {
-            name: "Жаңа Отбасы 4",
-            class: "family4",
-            children: [
-                { name: "Бала 8", class: "family4", children: [{ name: "Немере 21", class: "family4" }, { name: "Немере 22", class: "family4" }] }
-            ]
-        }
-    ]
-};
-
+        };
 
         const width = 1000, height = 600;
         const svg = d3.select("svg"),
               g = svg.append("g").attr("transform", "translate(50,50)");
-        
-        const tree = d3.tree()
-            
-            .size([width - 100, height - 200])
-            .separation((a, b) => a.parent === b.parent ? 1.5 : 2);
 
+        const tree = d3.tree().nodeSize([180, 100]);
+        const root = d3.hierarchy(treeData, d => d.children);
+        root.x0 = height / 2;
+        root.y0 = 0;
 
+        root.children.forEach(collapse);
 
-       
-        const root = d3.hierarchy(treeData);
-        tree(root);
-        
+        function collapse(d) {
+            if (d.children) {
+                d._children = d.children;
+                d._children.forEach(collapse);
+                d.children = null;
+            }
+        }
+
         function update(source) {
-            const nodes = root.descendants(), links = root.links();
             tree(root);
-            
-            g.selectAll(".link").remove();
-            g.selectAll(".node").remove();
-            
-            g.selectAll(".link")
-                .data(links)
-                .enter().append("path")
+            const nodes = root.descendants(), links = root.links();
+            nodes.forEach(d => d.y = d.depth * 180);
+
+            const link = g.selectAll(".link").data(links, d => d.target.id);
+            link.enter().append("path")
                 .attr("class", "link")
-                .attr("d", d3.linkVertical()
-                    .x(d => d.x)
-                    .y(d => d.y));
-            
-            const node = g.selectAll(".node")
-                .data(nodes, d => d.id || (d.id = Math.random()));
-            
+                .attr("d", d3.linkHorizontal().x(d => d.y).y(d => d.x))
+                .merge(link);
+            link.exit().remove();
+
+            const node = g.selectAll(".node").data(nodes, d => d.id || (d.id = Math.random()));
             const nodeEnter = node.enter().append("g")
-                .attr("class", d => "node " + (d.data.class || ""))
-                .attr("transform", d => `translate(${d.x},${d.y})`)
-                .on("click", function(event, d) {
-                    if (d.children) {
-                        d._children = d.children;
-                        d.children = null;
-                    } else {
-                        d.children = d._children;
-                        d._children = null;
-                    }
-                    update(d);
-                });
-            
+                .attr("class", "node")
+                .attr("transform", d => `translate(${source.y0},${source.x0})`)
+                .on("click", (event, d) => toggleChildren(d));
+
             nodeEnter.append("rect")
                 .attr("width", 160)
                 .attr("height", 60)
                 .attr("x", -80)
                 .attr("y", -30);
-            
+
             nodeEnter.append("text")
                 .attr("dy", ".35em")
                 .attr("y", 5)
-                .attr("x", 0)
                 .text(d => d.data.name);
+
+            const nodeUpdate = nodeEnter.merge(node);
+            nodeUpdate.transition().duration(500)
+                .attr("transform", d => `translate(${d.y},${d.x})`);
+
+            node.exit().transition().duration(500)
+                .attr("transform", d => `translate(${source.y},${source.x})`)
+                .remove();
+
+            root.x0 = source.x;
+            root.y0 = source.y;
         }
-        
+
+        function toggleChildren(d) {
+            if (d.children) {
+                d._children = d.children;
+                d.children = null;
+            } else {
+                d.children = d._children;
+                d._children = null;
+            }
+            update(d);
+        }
+
         update(root);
     </script>
 </body>
