@@ -47,9 +47,12 @@
     <div class="tree">
         <div class="box" onclick="toggleVisibility('parent')">Ахмаджон Махбуба</div>
         <div id="parent" class="branch hidden">
-            <div class="box" onclick="toggleVisibility('father')">Әке</div>
-            <div class="box" onclick="toggleVisibility('mother1')">Шеше 1</div>
-            <div class="box" onclick="toggleVisibility('mother2')">Шеше 2</div>
+            <div class="box" onclick="toggleVisibility('father')">Абдукодир Ирисой</div>
+            <div class="box" onclick="toggleVisibility('mother1')">Абдумажит Салима</div>
+            <div class="box" onclick="toggleVisibility('mother2')">Арапат Мухтар</div>
+            <div class="box" onclick="toggleVisibility('father')">Абдуманнап Парахат</div>
+            <div class="box" onclick="toggleVisibility('mother1')">Хикоят Акмал</div>
+            <div class="box" onclick="toggleVisibility('mother2')">Мапрат Мирзахмат</div>
         </div>
         <div id="father" class="branch hidden">
             <div class="box" onclick="toggleVisibility('child1')">Бала 1</div>
