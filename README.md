@@ -80,7 +80,12 @@ const treeData = {
         const svg = d3.select("svg"),
               g = svg.append("g").attr("transform", "translate(50,50)");
         
-        const tree = d3.tree().size([width - 100, height - 200]);
+        const tree = d3.tree()
+            .size([width - 100, height - 200])
+            .separation((a, b) => a.parent === b.parent ? 1.5 : 2);
+
+
+
        
         const root = d3.hierarchy(treeData);
         tree(root);
