@@ -34,34 +34,35 @@
 <body>  
     <svg width="1000" height="600"></svg>  
     <script>  
-        const treeData = {  
-            name: "Ахмаджон Махбуба",  
-            children: [  
-                {  name: "Абдумажит Салима", class: "family1",  
+        const treeData = {
+    name: "Ахмаджон Махбуба",
+    children: [
+        {
+            name: "Абдумажит Салима",
+            class: "family1",
+            children: [
+                { 
+                    name: "Фуркат Нигора", 
+                    class: "family1",
                     children: [
-                        { 
-                            name: "Фуркат Нигора", 
-                            class: "family1",
-                            children: [
-                                { name: "Жаңа Бала", class: "family1" } // Жаңа қосылған бала
-                            ]
-                        },
-                        { name: "Гайрат Дилфуза", class: "family1" },  
-                        { name: "Уткир Шахло", class: "family1" },  
-                        { name: "Октам Феруза", class: "family1" }  
-                            
-                    ]  
-                },  
-                {  
-                    name: "Абдукодир Ирисой",  
-                    class: "family2",  
-                    children: [  
-                        { name: "Фуркат Нигора", class: "family2" },  
-                        { name: "Гайрат Дилфуза", class: "family2" },  
-                        { name: "Уткир Шахло", class: "family2" },  
-                        { name: "Октам Феруза", class: "family2" }  
-                    ]  
-                },  
+                        { name: "Жаңа Бала", class: "family1" } // Жаңа қосылған бала
+                    ]
+                },
+                { name: "Гайрат Дилфуза", class: "family1" },
+                { name: "Уткир Шахло", class: "family1" },
+                { name: "Октам Феруза", class: "family1" }
+            ]
+        },
+        {
+            name: "Абдукодир Ирисой",
+            class: "family2",
+            children: [
+                { name: "Бала 5", class: "family2", children: [{ name: "Немере 13", class: "family2" }, { name: "Немере 14", class: "family2" }, { name: "Немере 15", class: "family2" }] },
+                { name: "Бала 6", class: "family2", children: [{ name: "Немере 16", class: "family2" }, { name: "Немере 17", class: "family2" }, { name: "Немере 18", class: "family2" }] }
+            ]
+        }
+    ]
+};  
                 {  
                     name: "Жаңа Отбасы 3",  
                     class: "family3",  
