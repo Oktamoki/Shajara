@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="kk">
 <head>
     <meta charset="UTF-8">
@@ -32,7 +33,7 @@
     </style>
 </head>
 <body>
-    <svg width="1000" height="600"></svg>
+    <svg width="100%" height="600" viewBox="0 0 1000 600"></svg>
     <script>
         const treeData = {
             name: "Ахмаджон Махбуба",
@@ -41,37 +42,43 @@
                     name: "Абдумажит Салима",
                     class: "family1",
                     children: [
-                        { name: "Фуркат Нигора", class: "family1" },
-                        { name: "Гайрат Дилфуза", class: "family1" },
-                        { name: "Уткир Шахло", class: "family1" },
-                        { name: "Октам Феруза", class: "family1" }
+                        { 
+                            name: "Фуркат Нигора", 
+                            class: "family1",
+                            children: [
+                                { name: "Бала 1", class: "family1" },
+                                { name: "Бала 2", class: "family1", children: [
+                                    { name: "Немере 1", class: "family1" },
+                                    { name: "Немере 2", class: "family1" }
+                                ]}
+                            ]
+                        },
+                        { name: "Гайрат Дилфуза", class: "family1", children: [
+                            { name: "Бала 3", class: "family1" },
+                            { name: "Бала 4", class: "family1" }
+                        ]}
                     ]
                 },
                 {
                     name: "Абдукодир Ирисой",
                     class: "family2",
                     children: [
-                { name: "Фуркат Нигора", class: "family2" },
-                        { name: "Гайрат Дилфуза", class: "family2" },
-                        { name: "Уткир Шахло", class: "family2" },
-                        { name: "Октам Феруза", class: "family2" }
-                    ]
-                },
-                {
-                    name: "Жаңа Отбасы 3",
-                    class: "family3",
-                    children: [
-                        { name: "Фуркат Нигора", class: "family3" },
-                        { name: "Гайрат Дилфуза", class: "family3" },
-                        { name: "Уткир Шахло", class: "family3" },
-                        { name: "Октам Феруза", class: "family3" }
-                    ]
-                },
-                {
-                    name: "Жаңа Отбасы 4",
-                    class: "family4",
-                    children: [
-                        { name: "Бала 8", class: "family4", children: [{ name: "Немере 21", class: "family4" }, { name: "Немере 22", class: "family4" }] }
+                        { 
+                            name: "Фуркат Нигора", 
+                            class: "family2",
+                            children: [
+                                { name: "Бала 9", class: "family2" },
+                                { name: "Бала 10", class: "family2" }
+                            ]
+                        },
+                        { 
+                            name: "Гайрат Дилфуза", 
+                            class: "family2",
+                            children: [
+                                { name: "Бала 11", class: "family2" },
+                                { name: "Бала 12", class: "family2" }
+                            ]
+                        }
                     ]
                 }
             ]
@@ -79,25 +86,24 @@
 
         const width = 1000, height = 600;
         const svg = d3.select("svg"),
-              g = svg.append("g").attr("transform", "translate(50,50)");
+              g = svg.append("g").attr("transform", `translate(${width / 2}, 50)`);
 
-        const tree = d3.tree()
-            .size([width - 100, height - 200])
-            .separation((a, b) => a.parent === b.parent ? 1.5 : 2);
+        const tree = d3.tree().size([width - 200, height - 200]);
 
         const root = d3.hierarchy(treeData, d => d.children);
-        root.children.forEach(collapse); // Барлық түйіндерді жабу
+        root.children.forEach(collapse);
 
         function collapse(d) {
             if (d.children) {
-                d._children = d.children; // Барлық балаларын _children-ге сақтау
-                d.children = null; // Балалар тізімін босату
-                d._children.forEach(collapse); // Рекурсивті түрде барлық деңгейде жабу
+                d._children = d.children;
+                d.children = null;
+                d._children.forEach(collapse);
             }
         }
 
         function update(source) {
-            const nodes = root.descendants(), links = root.links();
+            const nodes = root.descendants();
+            const links = root.links();
             tree(root);
 
             g.selectAll(".link").remove();
@@ -107,9 +113,7 @@
                 .data(links)
                 .enter().append("path")
                 .attr("class", "link")
-                .attr("d", d3.linkVertical()
-                    .x(d => d.x)
-                    .y(d => d.y));
+                .attr("d", d3.linkVertical().x(d => d.x).y(d => d.y));
 
             const node = g.selectAll(".node")
                 .data(nodes, d => d.id || (d.id = Math.random()));
@@ -118,13 +122,7 @@
                 .attr("class", d => "node " + (d.data.class || ""))
                 .attr("transform", d => `translate(${d.x},${d.y})`)
                 .on("click", function(event, d) {
-                    if (d.children) {
-                        d._children = d.children;
-                        d.children = null;
-                    } else {
-                        d.children = d._children;
-                        d._children = null;
-                    }
+                    d.children = d.children ? null : d._children;
                     update(d);
                 });
 
@@ -137,8 +135,10 @@
             nodeEnter.append("text")
                 .attr("dy", ".35em")
                 .attr("y", 5)
-                .attr("x", 0)
                 .text(d => d.data.name);
+
+            nodeEnter.transition().duration(500)
+                .attr("transform", d => `translate(${d.x},${d.y})`);
         }
 
         update(root);
