@@ -15,7 +15,7 @@
             ry: 5;
         }
         .node text {
-            font-size: 12px;
+            font-size: 14px;
             text-anchor: middle;
             dominant-baseline: middle;
             fill: white;
