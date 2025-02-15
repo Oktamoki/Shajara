@@ -49,73 +49,17 @@
             top: -20px;
         }
         .horizontal-line {
-            width: calc(100% - 40px);
+            width: 100%;
             height: 2px;
-            top: 0px;
-            left: 20px;
+            background: black;
+            position: absolute;
+            top: 0;
         }
     </style>
 </head>
 <body>
     <h2>Менің Шежірем</h2>
     <div class="tree">
-        <!-- Атасы мен әжесі -->
+        <!-- Ата-әже -->
         <div class="level">
-            <div class="person" onclick="toggleChildren('parents')">АТА (Қуаныш)
-                <div class="connector vertical-line"></div>
-            </div>
-            <div class="person" onclick="toggleChildren('parents')">ӘЖЕ (Айман)
-                <div class="connector vertical-line"></div>
-            </div>
-        </div>
-
-        <div class="connector horizontal-line"></div>
-
-        <!-- Әке-шеше -->
-        <div id="parents" class="children">
-            <div class="level">
-                <div class="person" onclick="toggleChildren('kids')">ӘКЕ (Еркін)
-                    <div class="connector vertical-line"></div>
-                </div>
-                <div class="person" onclick="toggleChildren('kids')">АНА (Гүлжан)
-                    <div class="connector vertical-line"></div>
-                </div>
-            </div>
-            <div class="connector horizontal-line"></div>
-        </div>
-
-        <!-- 5 бала -->
-        <div id="kids" class="children">
-            <div class="level">
-                <div class="person" onclick="toggleChildren('kid1')">ҰЛ 1
-                    <div class="connector vertical-line"></div>
-                </div>
-                <div class="person" onclick="toggleChildren('kid2')">ҰЛ 2
-                    <div class="connector vertical-line"></div>
-                </div>
-                <div class="person" onclick="toggleChildren('kid3')">ҰЛ 3
-                    <div class="connector vertical-line"></div>
-                </div>
-                <div class="person" onclick="toggleChildren('kid4')">ҰЛ 4
-                    <div class="connector vertical-line"></div>
-                </div>
-                <div class="person" onclick="toggleChildren('kid5')">ҰЛ 5
-                    <div class="connector vertical-line"></div>
-                </div>
-            </div>
-            <div class="connector horizontal-line"></div>
-        </div>
-    </div>
-
-    <script>
-        function toggleChildren(id) {
-            var element = document.getElementById(id);
-            if (element.style.display === "none" || element.style.display === "") {
-                element.style.display = "flex";
-            } else {
-                element.style.display = "none";
-            }
-        }
-    </script>
-</body>
-</html>
+            <div class="person" onclick="toggleChildren('
