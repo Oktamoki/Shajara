@@ -41,10 +41,11 @@
                     children: [  
                         { name: "Фуркат Нигора", class: "family1,
                               children: [  
-                                    { name: "Диёра Достон", class: "family1," ]},] },
-                                        
-                            
-                        { name: "Гайрат Дилфуза", class: "family1" },  
+                                    { name: "Диёра Достон", class: "family1,"}, ]},] },
+                                    
+                      children: [ 
+                       
+                 {        { name: "Гайрат Дилфуза", class: "family1" },  
                         { name: "Уткир Шахло", class: "family1" },  
                         { name: "Октам Феруза", class: "family1" }  
                             
@@ -54,7 +55,7 @@
                     name: "Абдукодир Ирисой",  
                     class: "family2",  
                     children: [  
-                { name: "Фуркат Нигора", class: "family2" },  
+                        { name: "Фуркат Нигора", class: "family2" },  
                         { name: "Гайрат Дилфуза", class: "family2" },  
                         { name: "Уткир Шахло", class: "family2" },  
                         { name: "Октам Феруза", class: "family2" }  
