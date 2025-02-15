@@ -30,25 +30,7 @@
             border: 2px solid black;
             min-width: 120px;
             box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
         }
-        .connector {
-            width: 2px;
-            height: 20px;
-            background: black;
-            margin: 0 auto;
-        }
-    </style>
-</head>
-<body>
-    <h2>Менің Шежірем</h2>
-    <div class="tree">
-        <!-- Атасы мен әжесі -->
-        <div class="level">
-            <div class="person" style="background:#ADD8E6;">АТА (Қуаныш)</div>
-            <div class="person" style="background:#ADD8E6;">ӘЖЕ (Айман)</div>
-        </div>
-
-        <div class="connector"></div>
-
-        <!-- Әке-шеше -->
-        <div class="
+        .children {
+            display: none;
