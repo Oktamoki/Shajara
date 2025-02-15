@@ -37,9 +37,7 @@
         const treeData = {  
             name: "Ахмаджон Махбуба",  
             children: [  
-                {  
-                    name: "Абдумажит Салима",  
-                    class: "family1",  
+                {  name: "Абдумажит Салима", class: "family1",  
                     children: [  
                         { name: "Фуркат Нигора", class: "family1" },  
                         { name: "Гайрат Дилфуза", class: "family1" },  
