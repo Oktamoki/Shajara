@@ -47,26 +47,29 @@
     <div class="tree">
         <div class="box" onclick="toggleVisibility('parent')">Ахмаджон Махбуба</div>
         <div id="parent" class="branch hidden">
-            <div class="box" onclick="toggleVisibility('father')">Абдукодир Ирисой</div>
-            <div class="box" onclick="toggleVisibility('mother1')">Абдумажит Салима</div>
-            <div class="box" onclick="toggleVisibility('mother2')">Арапат Мухтар</div>
-            <div class="box" onclick="toggleVisibility('father')">Абдуманнап Парахат</div>
-            <div class="box" onclick="toggleVisibility('mother1')">Хикоят Акмал</div>
-            <div class="box" onclick="toggleVisibility('mother2')">Мапрат Мирзахмат</div>
+            <div class="box" onclick="toggleVisibility('Abdukadir')">уғли Абдукодир Ирисой</div>
+            <div class="box" onclick="toggleVisibility('Abdumazhit')">уғли Абдумажит Салима</div>
+            <div class="box" onclick="toggleVisibility('mother2')">қизи Арапат Мухтар</div>
+            <div class="box" onclick="toggleVisibility('father')">уғли Абдуманнап Парахат</div>
+            <div class="box" onclick="toggleVisibility('mother1')">қизи Хикоят Акмал</div>
+            <div class="box" onclick="toggleVisibility('mother2')">қизи Мапрат Мирзахмат</div>
         </div>
-        <div id="father" class="branch hidden">
-            <div class="box" onclick="toggleVisibility('child1')">Бала 1</div>
-            <div class="box" onclick="toggleVisibility('child2')">Бала 2</div>
-            <div class="box" onclick="toggleVisibility('child3')">Бала 3</div>
-            <div class="box" onclick="toggleVisibility('child4')">Бала 4</div>
-            <div class="box" onclick="toggleVisibility('child5')">Бала 5</div>
-            <div class="box" onclick="toggleVisibility('child6')">Бала 6</div>
+        <div id="Abdukadir" class="branch hidden">
+            <div class="box" onclick="toggleVisibility('child1')">уғли Султанмурот Шахло</div>
+            <div class="box" onclick="toggleVisibility('child2')">қизи Тошбуви Мурот</div>
+            <div class="box" onclick="toggleVisibility('child3')">қизи Дурбуви Тулкин</div>
+            <div class="box" onclick="toggleVisibility('child4')">қизи Холисхон Фарход</div>
+            <div class="box" onclick="toggleVisibility('child5')">қизи Ирода Сарвар</div>
+            <div class="box" onclick="toggleVisibility('child6')">қизи Зарифа Камол</div>
+            <div class="box" onclick="toggleVisibility('child6')">қизи Юлдуз Динмухаммад</div>
         </div>
-        <div id="child1" class="branch hidden">
-            <div class="box">Немере 1</div>
-            <div class="box">Немере 2</div>
-            <div class="box">Немере 3</div>
-        </div>
+         <div id="Abdumazhit" class="branch hidden">
+        <div class="box" onclick="toggleVisibility('child1')">уғли Фуркат Нигора</div>
+            <div class="box" onclick="toggleVisibility('child2')">уғли Гайрат Дилфуза</div>
+            <div class="box" onclick="toggleVisibility('child3')">уғли Уткир Шахло</div>
+            <div class="box" onclick="toggleVisibility('child4')">уғли Октам Феруза</div>
+            <div class="box" onclick="toggleVisibility('child5')">уғли Учкун Дилобар</div>
+         </div>
     </div>
 
     <script>
