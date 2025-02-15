@@ -43,9 +43,7 @@
                     children: [
                         { name: "Фуркат Нигора", class: "family1",
                     children: [
-                        { name: "Диёра Достон", class: "family1",
-                    children: [
-                        { name: "Абдуллох", class: "family1"  } 
+                        { name: "Диёра Достон", class: "family1"} 
                     ] },
                         { name: "Гайрат Дилфуза", class: "family1" },
                         { name: "Уткир Шахло", class: "family1" },
