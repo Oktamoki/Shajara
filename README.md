@@ -2,9 +2,9 @@
 <html lang="kk">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Шежіре</title>
-    <script src="https://cdn.jsdelivr.net/gh/ErikGartner/dTree/dist/dtree.min.js"></script>
+    <script src="dtree.min.js"></script> <!-- Локалды dTree.js -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,6 +13,13 @@
         #tree-container {
             width: 100%;
             height: 600px;
+            overflow-x: auto;
+        }
+        @media (max-width: 768px) {
+            #tree-container {
+                width: 100%;
+                overflow-x: scroll;
+            }
         }
     </style>
 </head>
