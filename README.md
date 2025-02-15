@@ -32,22 +32,38 @@
     </style>
 </head>
 <body>
-    <svg width="1300" height="600"></svg>
+    <svg width="1300" height="750"></svg>
     <script>
         const treeData = {
             name: "Ахмаджон Махбуба",
-            children: [{name: "Абдумажит Салима",
+            children: [
+                {
+                    name: "Абдумажит Салима",
                     class: "family1",
                     children: [{ name: "Фуркат Нигора",class: "family1",
                             children: [{ name: "Диёра Достон", class: "family1",
                                   children: [{ name: "Абдуллох", class: "family1"}] },
                                 { name: "Жахонгир", class: "family1"},
                                 { name: "Дилнура", class: "family1"} ] },
-                        { name: "Гайрат Дилфуза", class: "family1",
-                         children: [{ name: "Мавжуда Зухриддин", class: "family1",},
-                        { name: "Уткир Шахло", class: "family1" },
-                        { name: "Октам Феруза", class: "family1" },
-                        { name: "Учкун Дилобар", class: "family1" }       
+						{ name: "Гайрат Дилфуза", class: "family1" ,
+							children: [{ name: "Мавжуда Зухриддин", class: "family1",
+                                  children: [{ name: "Солиха", class: "family1"}] },
+								{ name: "Ирода Мухриддин", class: "family1"},
+								{ name: "Лобар", class: "family1"},
+								{ name: "Ойдин", class: "family1"},
+                                { name: "Кумуш", class: "family1"} ] },  
+                        { name: "Уткир Шахло", class: "family1",
+							children: [{ name: "Ирисбек", class: "family1"},	
+								{ name: "Азизбек", class: "family1"},
+                                { name: "МухаммадМахди", class: "family1"}] } ,  
+                        { name: "Октам Феруза", class: "family1",
+							children: [{ name: "Асадбек", class: "family1"},	
+								{ name: "Темурбек", class: "family1"},
+								{ name: "Самира", class: "family1"},
+                                { name: "Сумайя", class: "family1"}] } ,  
+                      { name: "Учкун Дилобар", class: "family1",
+							children: [{ name: "Хаёт", class: "family1"},	
+                                { name: "Робия", class: "family1"}] } ,                              
                     ]
                 },
                 {
@@ -75,13 +91,13 @@
             ]
         };
 
-        const width = 1300, height = 600;
+        const width = 1300, height = 700;
         const svg = d3.select("svg"),
               g = svg.append("g").attr("transform", "translate(50,50)");
 
         const tree = d3.tree()
             .size([width - 100, height - 200])
-            .separation((a, b) => a.parent === b.parent ? 4 : 5);
+            .separation((a, b) => a.parent === b.parent ? 2.5 : 3.5);
 
         const root = d3.hierarchy(treeData, d => d.children);
         root.children.forEach(collapse); // Барлық түйіндерді жабу
