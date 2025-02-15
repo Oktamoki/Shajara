@@ -82,7 +82,7 @@
 
         const tree = d3.tree()
             .size([width - 100, height - 200])
-            .separation((a, b) => a.parent === b.parent ? 2 : 3);
+            .separation((a, b) => a.parent === b.parent ? 4 : 5);
 
         const root = d3.hierarchy(treeData, d => d.children);
         root.children.forEach(collapse); // Барлық түйіндерді жабу
