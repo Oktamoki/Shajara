@@ -32,7 +32,7 @@
     </style>
 </head>
 <body>
-    <svg width="1300" height="750"></svg>
+    <svg width="1300" height="600"></svg>
     <script>
         const treeData = {
             name: "Ахмаджон Махбуба",
@@ -76,7 +76,7 @@
             ]
         };
 
-        const width = 1300, height = 750;
+        const width = 1300, height = 600;
         const svg = d3.select("svg"),
               g = svg.append("g").attr("transform", "translate(50,50)");
 
