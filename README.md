@@ -43,7 +43,9 @@
                     children: [
                         { name: "Фуркат Нигора", class: "family1",
                     children: [
-                        { name: "Жаңа Бала", class: "family1" } // Жаңа қосылған бала
+                        { name: "Диёра Достон", class: "family1",
+                    children: [
+                        { name: "Абдуллох", class: "family1"  } 
                     ] },
                         { name: "Гайрат Дилфуза", class: "family1" },
                         { name: "Уткир Шахло", class: "family1" },
