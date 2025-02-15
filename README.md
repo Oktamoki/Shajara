@@ -38,14 +38,15 @@
             name: "Ахмаджон Махбуба",  
             children: [  
                 {  name: "Абдумажит Салима", class: "family1",  
-                    children: [  
-                        { name: "Фуркат Нигора", class: "family1,
-                              children: [  
-                                    { name: "Диёра Достон", class: "family1,"}, ]},] },
-                                    
-                      children: [ 
-                       
-                 {        { name: "Гайрат Дилфуза", class: "family1" },  
+                    children: [
+                        { 
+                            name: "Фуркат Нигора", 
+                            class: "family1",
+                            children: [
+                                { name: "Жаңа Бала", class: "family1" } // Жаңа қосылған бала
+                            ]
+                        },
+                        { name: "Гайрат Дилфуза", class: "family1" },  
                         { name: "Уткир Шахло", class: "family1" },  
                         { name: "Октам Феруза", class: "family1" }  
                             
