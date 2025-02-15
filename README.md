@@ -51,7 +51,7 @@
                     name: "Абдукодир Ирисой",
                     class: "family2",
                     children: [
-                        { name: "Бала 5", class: "family2", children: [{ name: "Немере 13", class: "family2" }, { name: "Немере 14", class: "family2" }, { name: "Немере 15", class: "family2" }] },
+                        { name: "Бала 5", class: "family2" }] },
                         { name: "Бала 6", class: "family2", children: [{ name: "Немере 16", class: "family2" }, { name: "Немере 17", class: "family2" }, { name: "Немере 18", class: "family2" }] }
                     ]
                 },
