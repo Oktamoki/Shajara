@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="kk">
 <head>
     <meta charset="UTF-8">
@@ -36,7 +35,7 @@
 <body>
     <svg width="100%" height="100%"></svg>
     <script>
-        // Деректерді JSON файлынан жүктеу (мысал ретінде treeData қолданылады)
+        // Деректер
         const treeData = {
             name: "Ахмаджон Махбуба",
             children: [
@@ -80,9 +79,10 @@
         const svg = d3.select("svg"),
               g = svg.append("g").attr("transform", "translate(50,50)");
 
+        // Ағаш құрылымы
         const tree = d3.tree()
-            .size([width - 100, height - 200])
-            .separation((a, b) => a.parent === b.parent ? 1.5 : 2);
+            .size([height - 100, width - 200]) // Экран өлшеміне бейімдеу
+            .separation((a, b) => a.parent === b.parent ? 2 : 3); // Түйіндер арасындағы қашықтық
 
         const root = d3.hierarchy(treeData);
         tree(root);
@@ -92,6 +92,7 @@
             .scaleExtent([0.5, 2])
             .on("zoom", (event) => g.attr("transform", event.transform)));
 
+        // Ағашты көрсету функциясы
         function update(source) {
             const nodes = root.descendants(), links = root.links();
             tree(root);
@@ -107,9 +108,9 @@
                 .attr("class", "link")
                 .transition()
                 .duration(500)
-                .attr("d", d3.linkVertical()
-                    .x(d => d.x)
-                    .y(d => d.y));
+                .attr("d", d3.linkHorizontal()
+                    .x(d => d.y) // X және Y орнын ауыстыру
+                    .y(d => d.x));
 
             // Түйіндерді қосу
             const node = g.selectAll(".node")
@@ -117,7 +118,7 @@
 
             const nodeEnter = node.enter().append("g")
                 .attr("class", d => "node " + (d.data.class || ""))
-                .attr("transform", d => `translate(${d.x},${d.y})`)
+                .attr("transform", d => `translate(${d.y},${d.x})`) // X және Y орнын ауыстыру
                 .on("click", function(event, d) {
                     if (d.children) {
                         d._children = d.children;
@@ -131,9 +132,9 @@
 
             // Түйіндерге төртбұрыш қосу
             nodeEnter.append("rect")
-                .attr("width", d => d.data.name.length * 10 + 40) // Мәтін ұзындығына қарай өзгеру
+                .attr("width", 160)
                 .attr("height", 60)
-                .attr("x", d => - (d.data.name.length * 10 + 40) / 2)
+                .attr("x", -80)
                 .attr("y", -30);
 
             // Түйіндерге мәтін қосу
@@ -148,6 +149,9 @@
                 .text(d => `Аты: ${d.data.name}\nТуылған жылы: ${d.data.birthYear || "Белгісіз"}`);
         }
 
+        // Бастапқыда тек басты түйіннің көрінуі
+        root.children.forEach(child => child._children = child.children);
+        root.children = null;
         update(root);
     </script>
 </body>
