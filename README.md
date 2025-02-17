@@ -157,5 +157,15 @@
 
         update(root);
     </script>
+    <script>
+    const zoom = d3.zoom()
+        .scaleExtent([0.5, 2]) // Масштабтау шектеулері
+        .on("zoom", (event) => {
+            g.attr("transform", event.transform);
+        });
+
+    svg.call(zoom);
+</script>
+
 </body>
 </html>
