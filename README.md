@@ -12,7 +12,7 @@
             stroke: #000;
             stroke-width: 1.5px;
             rx: 5;
-            ry: 5;
+            ry: 3;
         }
         .node text {
             font-size: 15px;
